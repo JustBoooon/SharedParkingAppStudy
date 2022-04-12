@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:title="@string/buttom_title_home"
+        android:icon="@mipmap/home"/>
+
+    <item
+        android:id="@+id/dynamicFragment"
+        android:title="@string/buttom_title_dynamic"
+        android:icon="@mipmap/dynamic"/>
+
+    <item
+        android:id="@+id/personalFragment"
+        android:title="@string/buttom_title_personal"
+        android:icon="@mipmap/personal"/>
+</menu>
