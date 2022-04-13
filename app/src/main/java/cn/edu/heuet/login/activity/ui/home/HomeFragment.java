@@ -53,6 +53,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 navController.navigate(R.id.navigation_find);
                 break;
             case R.id.button_share:
+                navController.navigate(R.id.navigation_share);
                 break;
         }
     }

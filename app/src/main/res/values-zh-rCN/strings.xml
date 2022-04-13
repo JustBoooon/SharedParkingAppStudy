@@ -37,4 +37,5 @@
     <string name="title_dynamic">动态</string>
     <string name="title_personal">我的</string>
     <string name="title_find">找车位</string>
+    <string name="title_share">共享车位</string>
 </resources>

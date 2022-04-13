@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_find"
             app:destination="@id/navigation_find" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_share"
+            app:destination="@id/navigation_share" />
     </fragment>
 
     <fragment
@@ -32,4 +35,10 @@
         android:name="cn.edu.heuet.login.activity.ui.find.FindFragment"
         android:label="@string/title_find"
         tools:layout="@layout/fragment_find" />
+
+    <fragment
+        android:id="@+id/navigation_share"
+        android:name="cn.edu.heuet.login.activity.ui.share.ShareFragment"
+        android:label="@string/title_share"
+        tools:layout="@layout/fragment_share"/>
 </navigation>
