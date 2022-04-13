@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="cn.edu.heuet.login.activity.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_find"
+            app:destination="@id/navigation_find" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_dynamic"
+        android:name="cn.edu.heuet.login.activity.ui.dynamic.DynamicFragment"
+        android:label="@string/title_dynamic"
+        tools:layout="@layout/fragment_dynamic" />
+
+    <fragment
+        android:id="@+id/navigation_personal"
+        android:name="cn.edu.heuet.login.activity.ui.personal.PersonalFragment"
+        android:label="@string/title_personal"
+        tools:layout="@layout/fragment_personal" />
+
+    <fragment
+        android:id="@+id/navigation_find"
+        android:name="cn.edu.heuet.login.activity.ui.find.FindFragment"
+        android:label="@string/title_find"
+        tools:layout="@layout/fragment_find" />
+</navigation>

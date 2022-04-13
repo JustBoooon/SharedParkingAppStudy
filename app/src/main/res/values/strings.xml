@@ -31,4 +31,9 @@
     <string name="buttom_title_home">home</string>
     <string name="buttom_title_dynamic">dynamic</string>
     <string name="buttom_title_personal">personal</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dynamic">Dynamic</string>
+    <string name="title_personal">Personal</string>
+    <string name="title_find">Find</string>
 </resources>

@@ -153,7 +153,7 @@ public class LoginActivity extends BaseActivity
                 startActivity(intentToRegister);
                 break;
 
-            // 以下功能目前都没有实现
+            /*// 以下功能目前都没有实现
             case R.id.tv_forget_password:
                 // 跳转到修改密码界面
 
@@ -162,7 +162,7 @@ public class LoginActivity extends BaseActivity
                 // 跳转到服务协议界面
 
                 break;
-            /*case R.id.iv_third_method1:
+            case R.id.iv_third_method1:
                 // 跳转第三方登录方式1
 
                 break;
@@ -199,7 +199,7 @@ public class LoginActivity extends BaseActivity
                         editor.putString("encryptedPassword", encryptedPassword);
 
                         if (editor.commit()) {
-                            Intent it_login_to_navigation = new Intent(LoginActivity.this, MainActivity.class);
+                            Intent it_login_to_navigation = new Intent(LoginActivity.this, NavigationActivity.class);
                             startActivity(it_login_to_navigation);
                             // 登录成功后，登录界面就没必要占据资源了
                             finish();

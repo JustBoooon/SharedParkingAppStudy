@@ -32,4 +32,9 @@
     <string name="buttom_title_home">首页</string>
     <string name="buttom_title_dynamic">动态</string>
     <string name="buttom_title_personal">我的</string>
+    <string name="title_activity_navigation">导航活动</string>
+    <string name="title_home">首页</string>
+    <string name="title_dynamic">动态</string>
+    <string name="title_personal">我的</string>
+    <string name="title_find">找车位</string>
 </resources>
