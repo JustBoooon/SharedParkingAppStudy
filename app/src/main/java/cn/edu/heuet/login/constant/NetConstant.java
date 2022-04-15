@@ -15,10 +15,12 @@ public class NetConstant {
     private static final String submitOrderURL    = "/order/createorder";
 
     private static final String getNewsListURL = "/news/list";
-
     private static final String getNewsByIdURL = "/news/detail/id?id=";
-
     private static final String getNewsByTitleURL = "/news/detail/title?title=";
+    //添加SharedListURL
+    private static final String getSharedListURL = "/shared/list";
+    private static final String getSharedByIdURL = "/shared/detail/id?id=";
+    private static final String getSharedByCommunityURL = "/shared/detail/community?community=";
 
     public static String getGetOtpCodeURL() {
         return getOtpCodeURL;
@@ -54,5 +56,17 @@ public class NetConstant {
 
     public static String getNewsByTitleURL() {
         return getNewsByTitleURL;
+    }
+    //SharedListURL返回方法
+    public static String getSharedListURL() {
+        return getSharedListURL;
+    }
+
+    public static String getSharedByIdURL() {
+        return getSharedByIdURL;
+    }
+
+    public static String getSharedByCommunityURL() {
+        return getSharedByCommunityURL;
     }
 }

@@ -12,12 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * 存放共同的代码
- *
- * @ClassName BaseActivity
- * @Author littlecurl
- * @Date 2020/11/8 12:52
- * @Version 1.0.0
- * @Description TODO
  */
 public class BaseActivity extends AppCompatActivity {
 

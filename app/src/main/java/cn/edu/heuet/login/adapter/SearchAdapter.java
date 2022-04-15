@@ -16,29 +16,27 @@ import java.util.List;
 
 import cn.edu.heuet.login.R;
 import cn.edu.heuet.login.activity.NewsDetailActivity;
-import cn.edu.heuet.login.bean.News;
+import cn.edu.heuet.login.bean.Shared;
 
 /**
- * @ClassName SearchAdapter
- * @Author littlecurl
- * @Date 2020/6/16 22:08
- * @Version 1.0.0
- * @Description 实现搜索结果的列表展示
+ * 适配器，布局管理
+ * 继承于RecyclerView里的Adapter
+ * 类里给了一个泛型<SearchAdapter.MyViewHolder>
  */
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHolder> {
-    private List<News> newsList;
+    private List<Shared> sharedList;
 
     /**
-     * 构造方法，接收参数
+     * 构造方法，接收数据
      *
-     * @param newsList 新闻列表
+     * @param sharedList 新闻列表
      */
-    public SearchAdapter(List<News> newsList) {
-        this.newsList = newsList;
+    public SearchAdapter(List<Shared> sharedList) {
+        this.sharedList = sharedList;
     }
 
     /**
-     * 对子布局的初始化
+     * 填充布局
      *
      * @param parent
      * @param viewType
@@ -47,19 +45,20 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // 填充布局
+        //获取子布局
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_search, parent, false);
+        //子布局做参传入new MyViewHolder()
         return new MyViewHolder(view);
     }
     /**
-     * 创建 ViewHolder
+     * 作为泛型
      */
     static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvTitle;
         ImageView ivPicture;
 
-        // 接收上面的布局文件，对布局的初始化
+        // 被new后，通过构造器，接收onCreateViewHolder传进来的view布局文件，对子布局初始化
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tv_title);
@@ -75,12 +74,12 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
      */
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        News news = newsList.get(position);
+        Shared shared = sharedList.get(position);
 
-        String title = news.getTitle();
-        String picture = news.getPicture();
+        String community = shared.getCommunity();
+        String picture = shared.getLocation();
         // 设置 Title 、 Picture
-        holder.tvTitle.setText(title);
+        holder.tvTitle.setText(community);
 
         //Glide填充图片
         Glide.with(holder.itemView.getContext())
@@ -91,7 +90,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), NewsDetailActivity.class);
-                intent.putExtra("news", news);
+                intent.putExtra("news", shared);
                 v.getContext().startActivity(intent);
             }
         });
@@ -99,6 +98,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
 
     @Override
     public int getItemCount() {
-        return newsList.size();
+        return sharedList.size();
     }
 }

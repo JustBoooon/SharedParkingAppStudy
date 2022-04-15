@@ -8,12 +8,6 @@ import cn.edu.heuet.login.constant.NetConstant;
 
 /**
  * 项目最开始所执行的内容
- *
- * @ClassName App
- * @Author littlecurl
- * @Date 2020/11/8 13:08
- * @Version 1.0.0
- * @Description TODO
  */
 public class App extends Application {
     @Override

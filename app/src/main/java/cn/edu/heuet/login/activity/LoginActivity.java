@@ -223,10 +223,7 @@ public class LoginActivity extends BaseActivity
       但目前只实现了telphone
      */
     private void asyncLogin(final String account, final String password) {
-        /*
-         发送请求属于耗时操作，所以开辟子线程执行
-         上面的参数都加上了final，否则无法传递到子线程中
-        */
+        //发送请求属于耗时操作，所以开辟子线程执行,上面的参数都加上了final，否则无法传递到子线程中
         new Thread(new Runnable() {
             @Override
             public void run() {

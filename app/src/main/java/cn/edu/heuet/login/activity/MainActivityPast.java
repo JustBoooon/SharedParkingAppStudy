@@ -29,7 +29,7 @@ import java.util.List;
 
 import cn.edu.heuet.login.R;
 import cn.edu.heuet.login.adapter.SearchAdapter;
-import cn.edu.heuet.login.bean.News;
+import cn.edu.heuet.login.bean.Shared;
 import cn.edu.heuet.login.constant.ModelConstant;
 import cn.edu.heuet.login.constant.NetConstant;
 import okhttp3.OkHttpClient;
@@ -41,11 +41,10 @@ import okhttp3.Response;
  */
 public class MainActivityPast extends BaseActivity {
 
-    private static EditText etSearch;
     private static RecyclerView rvList;
     private static SearchAdapter searchAdapter;
     private static final String TAG = "MAIN_ACTIVITY";
-    private List<News> newsList = new ArrayList<>();
+    private List<Shared> sharedList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,23 +52,23 @@ public class MainActivityPast extends BaseActivity {
         setContentView(R.layout.activity_main_past);
 
         // 搜索框
-        etSearch = findViewById(R.id.et_search);
+        EditText etSearch = findViewById(R.id.et_search);
 
         // 列表展示
         rvList = findViewById(R.id.rv_list);
 
-        //呈现纵向滑动列表布局
+        //呈现纵向滑动列表布局，不设置xml里是不会有滑动效果的
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         rvList.setLayoutManager(layoutManager);
 
-        //填充的适配器
-        setAdapter(newsList);
+        //填充子布局的适配器
+        setAdapter(sharedList);
 
         // 获取数据
 //        String url = NetConstant.baseService + NetConstant.getNewsListURL();
 //        MyAsyncTask task = new MyAsyncTask();
 //        task.execute(url);
-        String url = NetConstant.getNewsListURL();
+        String url = NetConstant.getSharedListURL();
         asyncGetNewsList(url);
 
         // 动态搜索
@@ -89,7 +88,7 @@ public class MainActivityPast extends BaseActivity {
                 hideToast();
 
                 if (TextUtils.isEmpty(s)) {
-                    String url = NetConstant.getNewsListURL();
+                    String url = NetConstant.getSharedListURL();
 //                    MyAsyncTask listTask = new MyAsyncTask();
 //                    listTask.execute(url);
                     asyncGetNewsList(url);
@@ -97,7 +96,7 @@ public class MainActivityPast extends BaseActivity {
                 }
 
                 //  String url = NetConstant.getNewsByIdURL() + s;
-                String url = NetConstant.getNewsByTitleURL() + s;
+                String url = NetConstant.getSharedByCommunityURL() + s;
 //                MyAsyncTask detailTask = new MyAsyncTask();
 //                detailTask.execute(url);
                 asyncGetNewsList(url);
@@ -126,9 +125,9 @@ public class MainActivityPast extends BaseActivity {
     private void asyncGetNewsList(String url) {
         XHttp.get(url)
                 .syncRequest(false)
-                .execute(new SimpleCallBack<List<News>>() {
+                .execute(new SimpleCallBack<List<Shared>>() {
                     @Override
-                    public void onSuccess(List<News> data) throws Throwable {
+                    public void onSuccess(List<Shared> data) throws Throwable {
                         if (data.size() == 0) {
                             showToastInThread(MainActivityPast.this, "查询结果为空");
                             setAdapter(null);
@@ -148,14 +147,14 @@ public class MainActivityPast extends BaseActivity {
 
     /**
      *
-     * @param newsList
+     * @param shareds
      */
-    private static void setAdapter(List<News> newsList) {
-        if (newsList == null || newsList.size() == 0) {
+    private static void setAdapter(List<Shared> shareds) {
+        if (shareds == null || shareds.size() == 0) {
             rvList.removeAllViews();
             return;
         }
-        searchAdapter = new SearchAdapter(newsList);
+        searchAdapter = new SearchAdapter(shareds);
         rvList.setAdapter(searchAdapter);
         searchAdapter.notifyDataSetChanged();
     }
@@ -166,12 +165,12 @@ public class MainActivityPast extends BaseActivity {
      * <p>
      * 网络请求，获取 NewsList
      */
-    private static class MyAsyncTask extends AsyncTask<String, Void, List<News>> {
+    private static class MyAsyncTask extends AsyncTask<String, Void, List<Shared>> {
 
         @Override
-        protected List<News> doInBackground(String... strings) {
+        protected List<Shared> doInBackground(String... strings) {
             String url = strings[0];
-            List<News> newsList = null;
+            List<Shared> sharedList = null;
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
                     .url(url)
@@ -185,18 +184,18 @@ public class MainActivityPast extends BaseActivity {
                 if (TextUtils.equals(status, "success")) {
                     JsonArray data = jsonObject.get("data").getAsJsonArray();
                     String dataStr = data.toString();
-                    newsList = JSON.parseArray(dataStr, News.class);
+                    sharedList = JSON.parseArray(dataStr, Shared.class);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return newsList;
+            return sharedList;
         }
 
         @Override
-        protected void onPostExecute(List<News> news) {
-            super.onPostExecute(news);
-            setAdapter(news);
+        protected void onPostExecute(List<Shared> shared) {
+            super.onPostExecute(shared);
+            setAdapter(shared);
         }
     }
 }
