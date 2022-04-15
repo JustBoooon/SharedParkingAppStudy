@@ -41,6 +41,7 @@ import okhttp3.Response;
  */
 public class MainActivityPast extends BaseActivity {
 
+    private static EditText etSearch;
     private static RecyclerView rvList;
     private static SearchAdapter searchAdapter;
     private static final String TAG = "MAIN_ACTIVITY";
@@ -52,14 +53,16 @@ public class MainActivityPast extends BaseActivity {
         setContentView(R.layout.activity_main_past);
 
         // 搜索框
-        EditText etSearch = findViewById(R.id.et_search);
+        etSearch = findViewById(R.id.et_search);
 
         // 列表展示
         rvList = findViewById(R.id.rv_list);
 
+        //呈现纵向滑动列表布局
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         rvList.setLayoutManager(layoutManager);
 
+        //填充的适配器
         setAdapter(newsList);
 
         // 获取数据
@@ -143,6 +146,10 @@ public class MainActivityPast extends BaseActivity {
 
     }
 
+    /**
+     *
+     * @param newsList
+     */
     private static void setAdapter(List<News> newsList) {
         if (newsList == null || newsList.size() == 0) {
             rvList.removeAllViews();

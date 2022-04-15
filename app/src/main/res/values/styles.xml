@@ -22,6 +22,7 @@
         <item name="android:background">@drawable/yuan_jiao_bian_kuang</item>
         <item name="android:textSize">20dp</item>
         <item name="android:textColor">#F8F8F8</item>
+        <item name="android:textColorHint">#F8F8F8</item>
         <item name="android:gravity">center</item>
     </style>
 </resources>

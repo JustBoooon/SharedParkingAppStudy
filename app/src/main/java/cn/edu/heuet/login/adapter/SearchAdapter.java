@@ -29,7 +29,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     private List<News> newsList;
 
     /**
-     * 接收参数
+     * 构造方法，接收参数
      *
      * @param newsList 新闻列表
      */
@@ -37,6 +37,13 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         this.newsList = newsList;
     }
 
+    /**
+     * 对子布局的初始化
+     *
+     * @param parent
+     * @param viewType
+     * @return
+     */
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -52,6 +59,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         TextView tvTitle;
         ImageView ivPicture;
 
+        // 接收上面的布局文件，对布局的初始化
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tv_title);
@@ -59,6 +67,12 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         }
     }
 
+    /**
+     * 传入MyViewHolder，并在该方法里赋值
+     *
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         News news = newsList.get(position);
@@ -68,6 +82,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         // 设置 Title 、 Picture
         holder.tvTitle.setText(title);
 
+        //Glide填充图片
         Glide.with(holder.itemView.getContext())
                 .load(picture)
                 .into(holder.ivPicture);
