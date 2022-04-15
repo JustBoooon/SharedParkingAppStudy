@@ -22,7 +22,7 @@
             <LinearLayout
                 android:id="@+id/ll_top"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:orientation="vertical"/>
 
             <LinearLayout
@@ -57,7 +57,8 @@
             <EditText
                 android:id="@+id/et_otpCode"
                 style="@style/login_button"
-                android:layout_width="140dp"
+                android:layout_width="130dp"
+                android:textSize="16dp"
 
                 android:layout_marginTop="12dp"
                 android:autofillHints=""
@@ -71,7 +72,9 @@
             <Button
                 android:id="@+id/bt_get_otp"
                 style="@style/login_button"
-                android:layout_width="80dp"
+                android:background="@drawable/yuan_jiao_bian_kuang_yellow"
+                android:textSize="16dp"
+                android:layout_width="90dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="@string/bt_get_code" />

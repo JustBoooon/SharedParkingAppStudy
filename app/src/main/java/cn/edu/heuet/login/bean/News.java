@@ -2,13 +2,6 @@ package cn.edu.heuet.login.bean;
 
 import java.io.Serializable;
 
-/**
- * @ClassName News
- * @Author littlecurl
- * @Date 2020/6/16 22:18
- * @Version 1.0.0
- * @Description TODO
- */
 public class News implements Serializable {
     private long id;
     private String title;
