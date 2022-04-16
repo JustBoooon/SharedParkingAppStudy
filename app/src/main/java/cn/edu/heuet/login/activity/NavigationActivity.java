@@ -1,5 +1,6 @@
 package cn.edu.heuet.login.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +30,12 @@ public class NavigationActivity extends AppCompatActivity {
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+    }
+
+    public void naToLo() {
+        Intent intent = new Intent(NavigationActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

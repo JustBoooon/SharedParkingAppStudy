@@ -13,7 +13,7 @@
         tools:context=".activity.ui.find.FindFragment">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/editTextPersonName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"

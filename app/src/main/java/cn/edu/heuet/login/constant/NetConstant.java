@@ -1,7 +1,7 @@
 package cn.edu.heuet.login.constant;
 
 /**
- * 返回各URL地址
+ * 地址返回类，返回各URL地址
  */
 public class NetConstant {
     public static final String baseService = "http://51hl498622.zicp.vip:50039";

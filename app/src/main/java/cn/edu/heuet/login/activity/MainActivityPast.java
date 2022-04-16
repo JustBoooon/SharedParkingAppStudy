@@ -69,7 +69,7 @@ public class MainActivityPast extends BaseActivity {
 //        MyAsyncTask task = new MyAsyncTask();
 //        task.execute(url);
         String url = NetConstant.getSharedListURL();
-        asyncGetNewsList(url);
+        asyncGetSharedList(url);
 
         // 动态搜索
         TextWatcher watcher = new TextWatcher() {
@@ -91,7 +91,7 @@ public class MainActivityPast extends BaseActivity {
                     String url = NetConstant.getSharedListURL();
 //                    MyAsyncTask listTask = new MyAsyncTask();
 //                    listTask.execute(url);
-                    asyncGetNewsList(url);
+                    asyncGetSharedList(url);
                     return;
                 }
 
@@ -99,7 +99,7 @@ public class MainActivityPast extends BaseActivity {
                 String url = NetConstant.getSharedByCommunityURL() + s;
 //                MyAsyncTask detailTask = new MyAsyncTask();
 //                detailTask.execute(url);
-                asyncGetNewsList(url);
+                asyncGetSharedList(url);
             }
 
         };
@@ -122,7 +122,12 @@ public class MainActivityPast extends BaseActivity {
         });
     }
 
-    private void asyncGetNewsList(String url) {
+    /**
+     * 网络访问请求，并调用setAdapter()将请求到的数据传入适配器
+     *
+     * @param url
+     */
+    private void asyncGetSharedList(String url) {
         XHttp.get(url)
                 .syncRequest(false)
                 .execute(new SimpleCallBack<List<Shared>>() {
@@ -146,6 +151,7 @@ public class MainActivityPast extends BaseActivity {
     }
 
     /**
+     * 将请求到的shards数据表做参传入新适配器
      *
      * @param shareds
      */
@@ -159,13 +165,11 @@ public class MainActivityPast extends BaseActivity {
         searchAdapter.notifyDataSetChanged();
     }
 
-
     /**
-     * 私有静态内部类
+     * 网络请求(暂未启用)
      * <p>
-     * 网络请求，获取 NewsList
      */
-    private static class MyAsyncTask extends AsyncTask<String, Void, List<Shared>> {
+    /*private static class MyAsyncTask extends AsyncTask<String, Void, List<Shared>> {
 
         @Override
         protected List<Shared> doInBackground(String... strings) {
@@ -197,5 +201,5 @@ public class MainActivityPast extends BaseActivity {
             super.onPostExecute(shared);
             setAdapter(shared);
         }
-    }
+    }*/
 }
